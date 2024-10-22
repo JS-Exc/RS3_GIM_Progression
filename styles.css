@@ -65,6 +65,7 @@
 /* Green background class for toggled elements */
 .green-background {
     background-color: rgb(0, 200, 0);
+    border-color: rgb(0, 200, 0);
 }
 
 /* Styles for span elements inside .multiple */
