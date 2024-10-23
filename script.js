@@ -81,12 +81,38 @@ const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const contentsLinks = document.querySelectorAll('#contents a');
 
-// Function to show the selected table
+// Get the subtitle element
+const pageSubtitle = document.getElementById('pageSubtitle');
+
+// Pages or sections with corresponding subtitles
+const pageSubtitles = {
+    0: 'Part 1',  // Subtitle for the first page
+    1: 'Part 2',        // Subtitle for the second page
+    2: 'Part 3',        // Subtitle for the third page
+    3: 'Part 4',
+    4: 'Part 5',
+    5: 'Part 6',
+    6: 'Dailies',
+    7: 'Weeklies',
+    8: 'Monthlies'
+};
+
+// Function to update the subtitle based on the current page
+function updateSubtitle(index) {
+    pageSubtitle.textContent = pageSubtitles[index] || 'Welcome'; // Fallback subtitle
+}
+
+// Modify the showTable function to also update the subtitle
 function showTable(index) {
     tables.forEach((table, i) => {
         table.style.display = i === index ? 'table' : 'none';
     });
+    updateSubtitle(index);  // Update subtitle when showing a new table
 }
+
+// Initially display the first table and set the subtitle
+showTable(currentTable);
+
 
 // Function to highlight clicked table row
 function toggleHighlight(event) {
