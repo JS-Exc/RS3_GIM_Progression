@@ -276,3 +276,9 @@ body.dark-mode .sidebar .btn {
     color: white;
 }
 
+a:active {
+    color: white;
+}
+a:visited {
+    color: white;
+}
