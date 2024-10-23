@@ -1,107 +1,356 @@
-<!-- 
-Some documentation
- <div class="flex-container"> defines the flex-container-like element,
-<div class="multiple"> defines the groups of items, and must contain >2 img
-<div class="arrow">→</div> makes an arrow between items in flex-container
-
-the rest is standard HTML afaik.
-
--->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RS3 Ironman Gear Progression</title>
-    <link rel="stylesheet" href="styles.css">
-
+    <title>The RS3 Ironman Progression Guide</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Dark Mode Toggle Button -->
-    <button id="dark-mode-toggle">Enable Dark Mode</button>
-    <h1>Excersion's Interactive Progression Chart</h1>
-    <p>
-    </p>
-    <div class="flex-container">
-        <div class="multiple">
-            <img src="img/Wicked_hood_detail.webp">
-            <img src="img/1024px-Edgeville_lodestone.png">
-            <img src="img/1024px-Taverley_lodestone.png">
-            <img src="img/Ring_of_kinship_detail.webp">
-            <img src="img/The_Blood_Pact_icon.webp">
-            <img src="img/The_Restless_Ghost_icon.webp">
-            <img src="img/1024px-Lumbridge_lodestone.png">
-            <img src="img/Cook's_Assistant_icon.webp">
-            <img src="img/1024px-Varrock_lodestone.png">
-            <img src="img/Monk's_Friend_icon.webp">
-            <img src="img/1024px-Yanille_lodestone.png">
-            <img src="img/Archaeology_detail.webp">
-            <img src="img/Anachronia_lodestone_(tier_1).webp">
-            <img src="img/Potent_herbs_detail.webp">
-            <img src="img/Necromancy!_icon.webp">
-            <img src="img/Kili_Row_icon.webp">
-            <img src="img/Rune_Mythos_icon.webp">
-            <img src="img/Underworld_Grimoire_1_detail.png">
-        </div>
-        <div class="arrow">→</div>
-        <div class="multiple">
-            <div class="skill" id="45 Magic" title="Get 45 Magic in Shattered Worlds">
-                <img src="img/120px-Magic_detail.webp">
-                <span>45</span>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Contents</h2>
+            <ul id="contents">
+                <li><a href="#" data-table="0">Part 1</a></li>
+                <li><a href="#" data-table="1">Part 2</a></li>
+                <li><a href="#" data-table="2">Part 3</a></li>
+                <li><a href="#" data-table="3">Part 4</a></li>
+                <li><a href="#" data-table="4">Part 5</a></li>
+                <li><a href="#" data-table="5">Part 6</a></li>
+                <li><a href="#" data-table="6">Dailies</a></li>
+                <li><a href="#" data-table="7">Weeklies</a></li>
+                <li><a href="#" data-table="8">Monthlies</a></li>
+                <!-- Add more sections as needed -->
+            </ul>
+        </aside>
+                
+        <main class="main-content">
+            <div class="darkmode" style="float: right;width: 80px;">
+                <button id="darkModeToggle" class="btn">Toggle Dark Mode</button>
             </div>
-            <div class="skill" id="45 Ranged" title="Get 45 Range in Shattered Worlds">
-                <img src="img/Ranged.png">
-                <span>45</span>
-            </div>
-            <img src="img/Violet_is_Blue_icon.webp">
-            <img src="img/Violet_is_Blue_Too_icon.webp">
-            <img src="img/Druidic_Ritual_icon.webp">
-            <img src="img/Wolf_Whistle_icon.webp">
-            <img src="img/1024px-Falador_lodestone.png">
-        </div>
-        <div class="arrow">→</div>
-        <div class="multiple">
-            
-        </div>
-    </div>
-    <style>
-        .CenterList{
-            text-align:center;
-        }
-        .CenterList ul li{
-           display:inline;
-        
-         }
-    </style>
-    <div class="CenterList">
-        <h2>Acknowledgments</h2>
-        <p>
-            A special thank you to the following members for their invaluable efforts (in no particular order):
-        </p>
-        <ul>
-            <li>
-                <strong>Madssb</strong>: Creator of the <a href="https://github.com/Madssb/InteractiveGearProg" target="_blank">OSRS Ironman Gear Progression Tool.</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <strong>TheRSGuy</strong>: Creator of the <a href="https://runescape.wiki/w/Ironman_Mode/Strategies/Efficient_Ironman_Pathway_Guide" target="_blank">RS3 Efficient Ironman Pathway Guide.</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <strong>Excersion</strong>: Conversion to RS3 guide
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <strong>RS3 Wiki</strong>: For providing the images and information used in this guide.
-            </li>
-        </ul>
-    </div>
-    <script src="script.js" defer></script>
-</body>
 
+            <div class="header">
+                <img src="https://runescape.wiki/images/RS3_Group_Ironman_logo.png" alt="RS3 Ironman Logo" style="float:left;width: 65px;height: 70px;padding-bottom: 0;">
+                <h1 class="title">RS3 Ironman Progression Guide</h1>
+            </div>
+
+            <div id="tableContainer">
+                <table id="taskTable1" class="taskTable">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="img/Wicked_hood_detail.webp" alt="Wicked Hood"></td>
+                            <td>Obtain the Wicked Hood</td>
+                            <td>Claim from Tam McGrubor</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/1024px-Edgeville_lodestone.png" alt="Edgeville"></td>
+                            <td>Edgeville Lodestone</td>
+                            <td>Unlock the Edgeville Lodestone.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/1024px-Taverley_lodestone.png" alt="Taverley"></td>
+                            <td>Taverley Lodestone</td>
+                            <td>Unlock the Taverley Lodestone.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Ring_of_kinship_detail.webp" alt="RingOfKinship"></td>
+                            <td>Ring of Kinship</td>
+                            <td>Claim from the Dungoneering Tutor</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/The_Blood_Pact_icon.webp" alt="TheBloodPact"></td>
+                            <td>The Blood Pact</td>
+                            <td>Complete the Blood Pact quest. </br>Ensure to keep Caitlyn's Staff and Kayle's Chargebow.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/1024px-Varrock_lodestone.png" alt="Varrock"></td>
+                            <td>Varrock Lodestone</td>
+                            <td>Unlock the Varrock Lodestone.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Monk's_Friend_icon.webp" alt="MonksFriend"></td>
+                            <td>Monk's Friend</td>
+                            <td>Complete the Monk's Friend Quest.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/1024px-Yanille_lodestone.png" alt="Yanille"></td>
+                            <td>Yanille Lodestone</td>
+                            <td>Unlock the Yanille Lodestone.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Archaeology_detail.webp" alt="Archaeology"></td>
+                            <td>Archaeology</td>
+                            <td>Complete the Archaeology tutorial.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Anachronia_lodestone_(tier_1).webp" alt="Anachronia"></td>
+                            <td>Anachronia</td>
+                            <td>Complete the Anachronia base camp tutorial.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Potent_herbs_detail.webp" alt="HerbyWerby"></td>
+                            <td>Herby Werby</td>
+                            <td>Complete a run of Herby Werby.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Anachronia_lodestone_(tier_1).webp" alt="Anachronia"></td>
+                            <td>Anachronia Lodestone</td>
+                            <td>Build the Anachronia Lodestone</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/Necromancy!_icon.webp" alt="Necromancy!"></td>
+                            <td>Necromancy!</td>
+                            <td>Talk to Sostratus after the quest for a set of Necromancer robes.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable2" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Al Kharid"></td>
+                            <td>Al Kharid</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Draynor Village"></td>
+                            <td>Draynor Village</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Falador"></td>
+                            <td>Falador</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable3" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Test 1</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Test 2</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Test 3</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable4" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Test 4</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Test 5</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Test 6</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable5" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Test 7</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Test 8</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Test 9</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable6" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Test 10</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Test 11</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Test 12</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable7" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Daily 1</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Daily 2</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Daily 3</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable8" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Weekly 1</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Weekly 2</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Weekly 3</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <table id="taskTable9" class="taskTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 1"></td>
+                            <td>Monthly 1</td>
+                            <td>A desert city known for its marketplace and several beginner quests.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 2"></td>
+                            <td>Monthly 2</td>
+                            <td>A small village with various activities, quests, and resources.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Test 3"></td>
+                            <td>Monthly 3</td>
+                            <td>A prominent city with many quests, home of the White Knights.</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="button-container" style="margin-top: 20px;">
+                <button id="prevButton" class="btn">Back</button>
+                <button id="nextButton" class="btn">Next</button>
+            </div>
+
+            <footer>
+                <p class="credits">Created by Exc / Jord. All rights reserved © 2024</p>
+            </footer>
+        </main>
+    </div>
+    
+    
+    <script src="script.js"></script>
+</body>
 </html>

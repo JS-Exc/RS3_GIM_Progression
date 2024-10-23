@@ -1,0 +1,264 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container to center the content */
+.container {
+    display: flex; /* Use flexbox for layout */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Centering content */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4; /* Light background for light mode */
+    padding: 20px;
+    position: fixed; /* Keep the sidebar fixed */
+    height: 100vh; /* Full height */
+}
+
+/* Sidebar title */
+.sidebar h2 {
+    text-align: center;
+}
+
+/* List styles */
+.sidebar ul {
+    list-style-type: none; /* Remove bullets from the list */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* General button styles for sidebar links */
+.sidebar ul li {
+    margin: 10px 0; /* Spacing between buttons */
+}
+
+.sidebar ul li a {
+    display: inline-block; /* Make the links block-level for padding */
+    padding: 10px 15px; /* Padding for button appearance */
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    text-align: center; /* Center text within button */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sidebar ul li a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Dark mode styles for sidebar links */
+body.dark-mode .sidebar ul li a {
+    background-color: #444; /* Darker button background for dark mode */
+    color: white; /* White text for dark mode */
+}
+
+body.dark-mode .sidebar ul li a:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 240px; /* Space for the sidebar */
+    padding: 20px;
+    flex: 1;
+}
+
+/* Centralized title */
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+/* Dark Mode Toggle Button */
+.btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Full-width table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the table */
+}
+
+/* Header styles */
+th {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+/* Table body styles */
+td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Force images in column 1 to be 40x50px */
+td img {
+    width: 60px;
+    height: 50px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Make text unselectable in the table */
+#taskTable tr {
+    user-select: none;
+}
+
+/* Set width for table columns */
+th:nth-child(1), td:nth-child(1) {
+    width: 10%; /* Set width for image column */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 20%; /* Set width for title column */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 70%; /* Set width for description column */
+}
+
+/* Completed task styles */
+.completed {
+    background-color: green; /* Change this to your preferred color */
+    color: white; /* Ensure text is readable */
+    opacity: 0.8; /* Optional: adjust opacity */
+}
+
+/* Footer styling */
+footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+}
+
+footer .credits {
+    margin: 0;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .container {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode table {
+    background-color: #444;
+    color: white;
+}
+
+body.dark-mode th, body.dark-mode td {
+    border-color: #555;
+    color: white;
+}
+
+body.dark-mode .title {
+    color: #ffffff; /* Set title color to white */
+}
+
+body.dark-mode .btn {
+    background-color: #555;
+    color: white;
+}
+
+body.dark-mode .btn:hover {
+    background-color: #444;
+}
+
+body.dark-mode footer {
+    color: white;
+}
+
+/* Button container styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+/* Dark mode styles for the contents */
+body.dark-mode #contents {
+    background-color: #333; /* Dark background for dark mode */
+    color: white; /* Text color for better readability */
+}
+
+/* Dark mode styles for links in the contents */
+body.dark-mode #contents a {
+    color: #007BFF; /* Bright link color */
+}
+
+body.dark-mode #contents a:hover {
+    color: #0056b3; /* Darker color for hover effect */
+}
+
+
+/* Dark mode styles for the contents title */
+body.dark-mode #contents h2 {
+    color: #ffffff; /* Set title color to white or another visible color */
+}
+
+/* Dark mode styles for the sidebar */
+body.dark-mode .sidebar {
+    background-color: #222; /* Dark background for the sidebar */
+    color: white; /* Text color for better readability */
+}
+
+/* Dark mode styles for sidebar links */
+body.dark-mode .sidebar ul li a {
+    color: white; /* Change text color to white for dark mode */
+    background-color: #444; /* Darker background for buttons in dark mode */
+}
+
+body.dark-mode .sidebar ul li a:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+
+body.dark-mode .sidebar .btn {
+    background-color: #555;
+    color: white;
+}

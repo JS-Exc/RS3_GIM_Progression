@@ -1,161 +1,129 @@
-// Wrap your code in an IIFE to avoid polluting the global namespace
-(function () {
-    // Declare variables that will be used across functions
-    let backgroundStates = {
-        skillContainers: [],
-        imagesOutsideSkill: []
-    };
-    let skillContainers;
-    let imagesOutsideSkill;
-    let darkModeToggle;
+// Select the dark mode toggle button and body element
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
 
-    // Function to initialize the application
-    function init() {
-        setImageAttributes();
-        cacheDOMElements();
-        loadStates();
-        bindEvents();
-        restoreStates();
-        loadDarkMode();
+// Check for dark mode preference in local storage
+let darkMode = localStorage.getItem('darkMode');
+console.log("Initial dark mode state:", darkMode);
+
+// If dark mode was previously enabled, apply it
+if (darkMode === 'enabled') {
+    body.classList.add('dark-mode');
+}
+
+// Function to enable dark mode
+function enableDarkMode() {
+    console.log("Enabling dark mode");
+    body.classList.add('dark-mode');
+    localStorage.setItem('darkMode', 'enabled');
+}
+
+// Function to disable dark mode
+function disableDarkMode() {
+    console.log("Disabling dark mode");
+    body.classList.remove('dark-mode');
+    localStorage.setItem('darkMode', 'disabled');
+}
+
+// Event listener for the dark mode toggle button
+darkModeToggle.addEventListener('click', () => {
+    console.log("Dark mode button clicked");
+    darkMode = localStorage.getItem('darkMode');
+
+    if (darkMode !== 'enabled') {
+        enableDarkMode(); // Enable dark mode if it's not already enabled
+    } else {
+        disableDarkMode(); // Disable dark mode if it's enabled
     }
+});
 
-    // Function to set 'alt', 'title', and 'id' attributes based on the image 'src'
-    function setImageAttributes() {
-        const images = document.querySelectorAll('img');
+// Table Click Event - Toggle 'completed' state
+const table = document.getElementById('taskTable');
 
-        images.forEach(function (img) {
-            const src = img.getAttribute('src');
-            const fileNameWithExtension = src.substring(src.lastIndexOf('/') + 1);
-            const fileName = fileNameWithExtension.substring(0, fileNameWithExtension.lastIndexOf('.'));
-            let displayName = fileName.replace(/_/g, ' ');
-            displayName = displayName.replace(/\b\w/g, function (char) {
-                return char.toUpperCase();
-            });
-            const id = displayName.replace(/ /g, '-').toLowerCase();
+// Initialize table entries from local storage
+const savedTasks = JSON.parse(localStorage.getItem('tasks')) || {};
 
-            img.setAttribute('alt', displayName);
-            img.setAttribute('title', displayName);
-            img.setAttribute('id', id);
-        });
+document.querySelectorAll('#taskTable tr').forEach((row, index) => {
+    if (savedTasks[index] === 'completed') {
+        setRowCompleted(row);
     }
+    row.addEventListener('click', () => toggleTaskCompletion(row, index));
+});
 
-    // Function to cache frequently accessed DOM elements
-    function cacheDOMElements() {
-        skillContainers = document.querySelectorAll('.skill');
-        imagesOutsideSkill = document.querySelectorAll('.flex-container img:not(.skill img)');
-        darkModeToggle = document.getElementById('dark-mode-toggle');
+// Function to toggle task completion
+function toggleTaskCompletion(row, index) {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
+    if (tasks[index] !== 'completed') {
+        setRowCompleted(row);
+        tasks[index] = 'completed';
+    } else {
+        resetRow(row);
+        delete tasks[index];
     }
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
-    // Function to load background and dark mode states from localStorage
-    function loadStates() {
-        // Load background states
-        try {
-            const savedBackgroundStates = JSON.parse(localStorage.getItem('backgroundStates'));
-            if (savedBackgroundStates) {
-                backgroundStates = savedBackgroundStates;
-            }
-        } catch (e) {
-            console.error('Error parsing background states from localStorage:', e);
-        }
+// Set row to 'completed' state
+function setRowCompleted(row) {
+    row.style.opacity = '0.5';
+    row.style.backgroundColor = 'green'; // Change this to your preferred color
+}
 
-        // Load dark mode state
-        const darkMode = localStorage.getItem('darkMode');
-        if (darkMode === 'enabled') {
-            document.body.classList.add('dark-mode');
-            if (darkModeToggle) darkModeToggle.textContent = 'Disable Dark Mode';
-        } else {
-            if (darkModeToggle) darkModeToggle.textContent = 'Enable Dark Mode';
-        }
+// Reset row state
+function resetRow(row) {
+    row.style.opacity = '1';
+    row.style.backgroundColor = ''; // Reset to original
+}
+
+let currentTable = 0;
+const tables = document.querySelectorAll('.taskTable');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const contentsLinks = document.querySelectorAll('#contents a');
+
+// Function to show the selected table
+function showTable(index) {
+    tables.forEach((table, i) => {
+        table.style.display = i === index ? 'table' : 'none';
+    });
+}
+
+// Function to highlight clicked table row
+function toggleHighlight(event) {
+    const row = event.target.closest('tr'); // Get the closest row (tr) to the clicked element
+    if (row) {
+        row.classList.toggle('completed');
     }
+}
 
-    // Function to bind event listeners
-    function bindEvents() {
-        // Bind click events for skill containers
-        skillContainers.forEach((container, index) => {
-            container.addEventListener('click', () => {
-                toggleBackground(container, index, 'skillContainers');
-            });
-        });
+// Add click event listener for highlighting
+tables.forEach(table => {
+    table.addEventListener('click', toggleHighlight);
+});
 
-        // Bind click events for images outside skill containers
-        imagesOutsideSkill.forEach((image, index) => {
-            image.addEventListener('click', () => {
-                toggleBackground(image, index, 'imagesOutsideSkill');
-            });
-            image.addEventListener('dragstart', (e) => {
-                e.preventDefault();
-            });
-        });
-
-        // Bind dark mode toggle event
-        if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', toggleDarkMode);
-        }
+// Navigation button functionalities
+prevButton.addEventListener('click', () => {
+    if (currentTable > 0) {
+        currentTable--;
+        showTable(currentTable);
     }
+});
 
-    // Function to restore background states
-    function restoreStates() {
-        // Restore background states for skill containers
-        skillContainers.forEach((container, index) => {
-            if (backgroundStates.skillContainers[index] === 'on') {
-                container.classList.add('green-background');
-            } else {
-                container.classList.remove('green-background');
-            }
-        });
-
-        // Restore background states for images outside skill containers
-        imagesOutsideSkill.forEach((image, index) => {
-            if (backgroundStates.imagesOutsideSkill[index] === 'on') {
-                image.classList.add('green-background');
-            } else {
-                image.classList.remove('green-background');
-            }
-        });
+nextButton.addEventListener('click', () => {
+    if (currentTable < tables.length - 1) {
+        currentTable++;
+        showTable(currentTable);
     }
+});
 
-    // Function to toggle the background color of an element and update its state
-    function toggleBackground(element, index, type) {
-        element.classList.toggle('green-background');
+// Add click events for sidebar navigation
+contentsLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        currentTable = parseInt(link.getAttribute('data-table'));
+        showTable(currentTable);
+    });
+});
 
-        if (element.classList.contains('green-background')) {
-            backgroundStates[type][index] = 'on';
-        } else {
-            backgroundStates[type][index] = 'off';
-        }
-
-        saveBackgroundStates();
-    }
-
-    // Function to save the current background states to localStorage
-    function saveBackgroundStates() {
-        localStorage.setItem('backgroundStates', JSON.stringify(backgroundStates));
-    }
-
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-
-        if (document.body.classList.contains('dark-mode')) {
-            darkModeToggle.textContent = 'Disable Dark Mode';
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            darkModeToggle.textContent = 'Enable Dark Mode';
-            localStorage.setItem('darkMode', 'disabled');
-        }
-    }
-
-    // Function to load dark mode state
-    function loadDarkMode() {
-        const darkMode = localStorage.getItem('darkMode');
-        if (darkMode === 'enabled') {
-            document.body.classList.add('dark-mode');
-            if (darkModeToggle) darkModeToggle.textContent = 'Disable Dark Mode';
-        } else {
-            if (darkModeToggle) darkModeToggle.textContent = 'Enable Dark Mode';
-        }
-    }
-
-    // Initialize the application when the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', init);
-})();
+// Initially display the first table
+showTable(currentTable);
