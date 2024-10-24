@@ -282,3 +282,22 @@ a:active {
 a:visited {
     color: white;
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    font-size: 1.1em;
+    border: 2px solid #007BFF;
+    border-radius: 5px 0 0 5px;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #0056b3;
+}

@@ -35,7 +35,13 @@
             </div>
 
             <div class="subtitle">
-                <h2 class="subtitle" id="pageSubtitle" style="padding-top: 20px;">Welcome</h2>
+                <div class="search-container">
+                    <form id="searchForm" action="https://runescape.wiki/" method="get" style="padding-top: 20px;">
+                        <input type="text" id="searchInput" name="search" placeholder="Search the RuneScape Wiki..." required>
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+                </div>                
+                <h2 class="subtitle" id="pageSubtitle" style="padding-top: 10px;">Welcome</h2>
             </div>
 
             <div id="tableContainer">

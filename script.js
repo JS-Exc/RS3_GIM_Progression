@@ -153,3 +153,12 @@ contentsLinks.forEach(link => {
 
 // Initially display the first table
 showTable(currentTable);
+
+document.getElementById('searchForm').addEventListener('submit', function (event) {
+    const searchInput = document.getElementById('searchInput').value.trim();
+
+    if (!searchInput) {
+        event.preventDefault(); // Prevent the form submission if the input is empty
+        alert('Please enter a search term!');
+    }
+});
